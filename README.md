@@ -19,12 +19,7 @@ This MCP server provides the following tools:
   - `zotero_get_item_fulltext`: Get the full text content of a specific item
   - `zotero_get_item_children`: Get child items (attachments, notes) for a specific item
 
-- **Library management**
-  - `zotero_update_item`: Update fields of an existing item in your library
-  - `zotero_add_tags`: Add tags to an item in your library
-  - `zotero_batch_update_tags`: Add or remove tags across multiple items
-  - `zotero_create_collection`: Create a new collection in your library
-  - `zotero_add_note`: Add a note to an item in your library
+
 
 All tool responses are formatted using Markdown for optimal readability when used with AI assistants.
 
