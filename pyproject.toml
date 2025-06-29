@@ -3,12 +3,12 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "zotero-mcp"
+name = "zotero-web-mcp"
 version = "0.1.0"
 authors = [
-  { name = "54yyyu", email = "54yyyu@github.com" },
+  { name = "raminos", email = "raminos@github.com" },
 ]
-description = "A Model Context Protocol server for Zotero"
+description = "A Model Context Protocol server for Zotero Web API"
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [
@@ -34,11 +34,14 @@ dev = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/54yyyu/zotero-mcp"
-"Bug Tracker" = "https://github.com/54yyyu/zotero-mcp/issues"
+"Homepage" = "https://github.com/raminos/zotero-web-mcp"
+"Bug Tracker" = "https://github.com/raminos/zotero-web-mcp/issues"
 
 [project.scripts]
-zotero-mcp = "zotero_mcp.cli:main"
+zotero-web-mcp = "zotero_web_mcp.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/zotero_web_mcp"]
 
 [tool.black]
 line-length = 88

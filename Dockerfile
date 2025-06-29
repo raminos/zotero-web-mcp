@@ -12,4 +12,4 @@ RUN pip install --no-cache-dir build hatchling \
     && pip install --no-cache-dir .
 
 # Start the MCP server
-ENTRYPOINT ["zotero-mcp", "serve", "--transport", "stdio"]
+ENTRYPOINT ["zotero-web-mcp", "serve", "--transport", "stdio"]

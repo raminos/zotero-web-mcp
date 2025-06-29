@@ -24,6 +24,6 @@ startCommand:
   commandFunction:
     # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
     |-
-    (config)=>{const env={}; if(!config.zoteroLocal){if(config.zoteroApiKey){env.ZOTERO_API_KEY=config.zoteroApiKey;} if(config.zoteroLibraryId){env.ZOTERO_LIBRARY_ID=config.zoteroLibraryId;} if(config.zoteroLibraryType){env.ZOTERO_LIBRARY_TYPE=config.zoteroLibraryType;} } else {env.ZOTERO_LOCAL='true';} return {command:'zotero-mcp', args:['serve','--transport','stdio'], env};}
+    (config)=>{const env={}; if(!config.zoteroLocal){if(config.zoteroApiKey){env.ZOTERO_API_KEY=config.zoteroApiKey;} if(config.zoteroLibraryId){env.ZOTERO_LIBRARY_ID=config.zoteroLibraryId;} if(config.zoteroLibraryType){env.ZOTERO_LIBRARY_TYPE=config.zoteroLibraryType;} } return {command:'zotero-web-mcp', args:['serve','--transport','stdio'], env};}
   exampleConfig:
     zoteroLocal: true

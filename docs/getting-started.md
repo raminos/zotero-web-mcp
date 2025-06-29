@@ -7,39 +7,21 @@ This guide will walk you through the setup and basic usage of the Zotero MCP ser
 First, install the Zotero MCP server using pip:
 
 ```bash
-pip install zotero-mcp
+pip install zotero-web-mcp
 ```
 
 ## Configuration
 
 The server needs to know how to connect to your Zotero library. There are two main ways to do this:
 
-### Option 1: Local Zotero (Recommended)
-
-If you're running Zotero 7 or newer on the same machine, you can connect to the local API:
-
-1. Enable the local API in Zotero's preferences:
-   - Open Zotero
-   - Go to Edit > Preferences > Advanced > API
-   - Check "Enable local API"
-
-2. Set the environment variable:
-   ```bash
-   export ZOTERO_LOCAL=true
-   ```
-
-### Option 2: Zotero Web API
-
-If you want to connect to your Zotero library via the web API:
+### Zotero Web API
 
 1. Get your Zotero API key:
    - Go to [https://www.zotero.org/settings/keys](https://www.zotero.org/settings/keys)
    - Create a new key with appropriate permissions (at least "Read" access)
-   
 2. Find your library ID:
    - For personal libraries, your user ID is available at the same page
    - For group libraries, it's the number in the URL when viewing the group
-   
 3. Set the environment variables:
    ```bash
    export ZOTERO_API_KEY=your_api_key
@@ -53,17 +35,21 @@ To use Zotero MCP with Claude Desktop:
 
 1. Make sure you have Claude Desktop installed
 2. Open your Claude Desktop configuration:
+
    - On macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
    - On Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 
 3. Add the Zotero MCP server to the configuration:
+
    ```json
    {
      "mcpServers": {
        "zotero": {
-         "command": "zotero-mcp",
+         "command": "zotero-web-mcp",
          "env": {
-           "ZOTERO_LOCAL": "true"
+           "ZOTERO_LIBRARY_TYPE": "user",
+           "ZOTERO_LIBRARY_ID": "0000000",
+           "ZOTERO_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXX"
          }
        }
      }
@@ -77,13 +63,13 @@ To use Zotero MCP with Claude Desktop:
 Zotero MCP works with any MCP-compatible client. You can start the server manually:
 
 ```bash
-zotero-mcp --transport stdio
+zotero-web-mcp --transport stdio
 ```
 
 For HTTP/SSE-based clients:
 
 ```bash
-zotero-mcp --transport sse --host localhost --port 8000
+zotero-web-mcp --transport sse --host localhost --port 8000
 ```
 
 ## Available Tools
@@ -118,4 +104,4 @@ If you encounter issues:
 - Verify your library ID and type
 - Look for error messages in the Claude Desktop logs or MCP server output
 
-For more help, see the [full documentation](https://github.com/yourusername/zotero-mcp).
+For more help, see the [full documentation](https://github.com/yourusername/zotero-web-mcp).
